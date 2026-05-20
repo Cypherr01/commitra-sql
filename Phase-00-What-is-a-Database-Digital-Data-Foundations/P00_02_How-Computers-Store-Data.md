@@ -1,32 +1,62 @@
 # Topic: How Computers Store Data
+
 ## What Is This?
-Computers store data in a way that allows them to retrieve and use it efficiently. This is done using a system of files and directories, where each file contains a collection of related data. In the context of our Digital Library project, we need to store book metadata, such as title, author, and publication date, as well as images of book covers.
+Computers store data in a hierarchical manner, using a combination of temporary and permanent storage. 
+Imagine a library where books are stored on shelves (permanent storage) and a librarian's desk (temporary storage) where books are temporarily placed while being checked out or processed.
 
 ## How It Works Internally
-Imagine a large library where books are stored on shelves. Each book has a unique identifier, such as a catalog number, that allows us to find it quickly. Similarly, computers use a system of files and directories to store and retrieve data. Each file has a unique name and location, which allows the computer to find and access it.
+Here's a step-by-step explanation of how computers store data internally:
+
+1. **RAM (Temporary Fast Memory)**: RAM (Random Access Memory) is a type of computer storage that temporarily holds data and applications while the computer is running. It's like a librarian's desk where books are temporarily placed.
+2. **Disk (Persistent Storage)**: Disks, such as Hard Disk Drives (HDD) or Solid-State Drives (SSD), provide permanent storage for data. This is like the library's bookshelves where books are stored long-term.
+3. **Pages**: Computers store data in fixed-size blocks called pages, typically 4KB, 8KB, or 16KB. Think of pages like individual bookshelves that can hold a specific number of books.
+4. **Why Databases Read/Write in Pages**: Databases read and write data in pages because it allows for more efficient storage and retrieval. Imagine checking out multiple books from the same bookshelf at once.
+5. **Sequential vs Random I/O**: Sequential I/O (Input/Output) accesses data in a continuous sequence, like reading a book from start to finish. Random I/O accesses data in a non-sequential manner, like looking up a specific page in a book. Sequential I/O is generally faster.
+6. **Buffer Pool**: A buffer pool is a cache of disk pages stored in RAM, which improves database performance by reducing the need for disk accesses. Think of it like a librarian's cart that holds frequently used books.
+7. **WAL (Write-Ahead Log)**: The Write-Ahead Log is a durability mechanism that writes changes to a log before writing them to the main data files. This ensures that data can be recovered in case of a crash or power failure.
+8. **Crash Recovery**: Crash recovery refers to the process of restoring a database to a consistent state after a crash or power failure. This is achieved through the WAL and buffer pool.
 
 ## Syntax and Structure
-Since we are just starting to learn about data storage, we don't have a specific syntax to work with yet. However, we can think about how we would organize our data in a simple way. For example, we might have a "books" directory that contains files for each book, with names like "book1.txt" or "book2.txt".
+```text
+# STEP 1: CPU receives instruction to store data
+# STEP 2: RAM allocates space for the data
+# STEP 3: Data is written to RAM (temporary storage)
+# STEP 4: Data is written to disk (permanent storage) in pages
+# STEP 5: Buffer pool caches frequently accessed disk pages in RAM
+# STEP 6: WAL logs changes before writing to data files
+# STEP 7: Crash recovery uses WAL and buffer pool to restore consistency
+In Phase 1 we will write this in real code.
+```
 
 ## Practical Example
-Let's say we have a book with the title "To Kill a Mockingbird" and author "Harper Lee". We might store this data in a simple text file called "book1.txt" with the following contents:
-```
-Title: To Kill a Mockingbird
-Author: Harper Lee
-```
-This is a very basic example, but it illustrates the idea of storing data in a file.
+Consider a digital library that stores book metadata and images. When a user searches for a book, the database retrieves the relevant metadata from the disk (permanent storage) and stores it in RAM (temporary storage) for faster access. The buffer pool ensures that frequently accessed book metadata remains in RAM.
 
 ## Common Mistakes Beginners Make
-Here are a few common mistakes beginners make when thinking about data storage:
-* Trying to store all data in a single file, which can become unwieldy and difficult to manage. For example, trying to store all book metadata in a single file called "all_books.txt".
-* Not using a consistent naming convention for files and directories, which can make it hard to find and access data. For example, using names like "book1", "book2", and "book_three" for different files.
-* Not thinking about how data will be used and retrieved, which can lead to inefficient data storage and retrieval. For example, storing book metadata in a way that makes it hard to search for books by author or title.
+1. **Mistake: Confusing RAM and Disk Storage**
+   Wrong idea: RAM and disk storage are the same thing.
+   Correct idea: RAM is temporary fast memory, while disk storage is permanent.
+
+2. **Mistake: Not Understanding Pages**
+   Wrong idea: Computers store data in individual bytes.
+   Correct idea: Computers store data in fixed-size blocks called pages.
+
+3. **Mistake: Ignoring the Importance of Buffer Pool**
+   Wrong idea: The buffer pool is not necessary for database performance.
+   Correct idea: The buffer pool significantly improves database performance by reducing disk accesses.
 
 ## Programming Challenge
-Think about how you would store data for a small collection of books, with metadata like title, author, and publication date. How would you organize the data, and what file naming convention would you use?
+Describe how a computer would store a single book's metadata (title, author, publication date) in RAM and on disk. Explain the steps involved in reading and writing this data.
 
 ## Solution
-One possible solution is to create a separate file for each book, with a name that includes the book title and author. For example, "to_kill_a_mockingbird_harper_lee.txt". This file could contain the book metadata, such as title, author, and publication date.
+```text
+# Step 1: CPU receives instruction to store book metadata
+# Step 2: RAM allocates space for the metadata
+# Step 3: Metadata is written to RAM (temporary storage)
+# Step 4: Metadata is written to disk (permanent storage) in pages
+# Step 5: Buffer pool caches frequently accessed metadata in RAM
+# Step 6: WAL logs changes before writing to data files
+# Step 7: Metadata is retrieved from RAM or disk when needed
+```
 
 ## What Comes Next
-In the next topic, we will learn about databases and how they can be used to store and manage large collections of data. We will explore the basics of database design and learn how to create a simple database to store our book metadata.
+The next topic is **SQL Basics**, which will introduce the fundamental concepts of SQL (Structured Query Language) and how it is used to interact with databases. This topic follows logically from "How Computers Store Data" because SQL is used to manage and manipulate data stored in databases.
