@@ -75,6 +75,7 @@ This repository is an automated, industry-grade learning system designed to teac
 - PostgreSQL Window Functions & Advanced Queries
 - PostgreSQL psql CLI Mastery
 - PostgreSQL Maintenance Commands
+- pgvector — Storing & Querying Vector Embeddings
 
 ### Database Design & Modeling
 - Entity-Relationship Modeling
